@@ -19,15 +19,15 @@ fun ListaLibrosScreen(
     onEliminarLibro: (Libro) -> Unit,
     onMarcarFavorito: (Libro) -> Unit,
     onVerDetalles: (Libro) -> Unit,
-    onAgregarClick: () -> Unit, // Callback para agregar nuevas novelas
+    onAgregarClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
         LazyColumn(
-            modifier = Modifier.weight(1f) // Ocupa todo el espacio disponible menos el botón
+            modifier = Modifier.weight(1f)
         ) {
             item {
-                Spacer(modifier = Modifier.height(78.dp)) // Esto añade un margen al principio
+                Spacer(modifier = Modifier.height(78.dp))
             }
             items(libros.size) { index ->
                 LibroItem(
@@ -39,7 +39,7 @@ fun ListaLibrosScreen(
             }
         }
 
-        // Botón para ir a la pantalla de agregar novela
+
         Button(
             onClick = onAgregarClick,
             modifier = Modifier.fillMaxWidth().padding(16.dp)

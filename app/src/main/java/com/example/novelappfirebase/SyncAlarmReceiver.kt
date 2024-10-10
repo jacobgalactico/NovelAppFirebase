@@ -1,26 +1,20 @@
-package com.example.novelapp
-
-import android.app.job.JobParameters
-import android.app.job.JobService
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
 import android.util.Log
+import com.example.novelapp.Libro
 import com.google.firebase.firestore.FirebaseFirestore
 
-class SyncJobService : JobService() {
+class SyncAlarmReceiver : BroadcastReceiver() {
 
-    override fun onStartJob(params: JobParameters?): Boolean {
-        sincronizarConFirebase {
-            jobFinished(params, false)
-        }
-        return true
+    override fun onReceive(context: Context?, intent: Intent?) {
+        Log.d("SyncAlarmReceiver", "Alarma recibida. Sincronizando datos...")
+
+        sincronizarConFirebase()
     }
 
-    override fun onStopJob(params: JobParameters?): Boolean {
-        return true
-    }
-
-    private fun sincronizarConFirebase(onComplete: () -> Unit) {
+    private fun sincronizarConFirebase() {
         val db = FirebaseFirestore.getInstance()
-
         val libros = listOf(
             Libro("El Quijote", "Miguel de Cervantes", 1605, "Una gran obra clásica"),
             Libro("Cien años de soledad", "Gabriel García Márquez", 1967, "La historia de la familia Buendía")
@@ -36,12 +30,11 @@ class SyncJobService : JobService() {
             )
             db.collection("novelas").add(libroMap)
                 .addOnSuccessListener { documentReference ->
-                    Log.d("SyncJobService", "Documento agregado con ID: ${documentReference.id}")
+                    Log.d("SyncAlarmReceiver", "Documento agregado con ID: ${documentReference.id}")
                 }
                 .addOnFailureListener { e ->
-                    Log.w("SyncJobService", "Error añadiendo documento", e)
+                    Log.w("SyncAlarmReceiver", "Error añadiendo documento", e)
                 }
         }
-        onComplete()
     }
 }

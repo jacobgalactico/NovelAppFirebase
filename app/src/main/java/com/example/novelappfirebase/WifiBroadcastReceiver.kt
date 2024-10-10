@@ -14,7 +14,6 @@ class WifiBroadcastReceiver : BroadcastReceiver() {
 
         if (capabilities != null && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
             Log.d("WifiBroadcastReceiver", "Conectado a Wi-Fi")
-            // Aquí podrías programar el JobScheduler o iniciar la sincronización
         }
     }
 }

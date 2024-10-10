@@ -42,9 +42,8 @@ fun App() {
                 pantallaActual = "lista"
             })
             "detalles" -> libroSeleccionado?.let { libro ->
-                // Aquí capturamos el evento de back y lo usamos para volver a la pantalla de la lista
                 BackHandler {
-                    pantallaActual = "lista" // Volver a la pantalla de lista de libros
+                    pantallaActual = "lista"
                 }
 
                 DetallesLibroScreen(

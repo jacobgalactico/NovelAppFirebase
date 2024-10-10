@@ -50,13 +50,12 @@ fun DetallesLibroScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
-                        .background(MaterialTheme.colorScheme.surfaceVariant) // Fondo diferente para la reseña
+                        .background(MaterialTheme.colorScheme.surfaceVariant) // Fondo de la reseña
                         .padding(8.dp)
                 ) {
                     Text(text = libro.resenas[index], style = MaterialTheme.typography.bodyMedium)
                 }
 
-                // Agregar un separador entre reseñas
                 if (index < libro.resenas.size - 1) {
                     Divider(
                         color = Color.Gray,
@@ -69,7 +68,6 @@ fun DetallesLibroScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Campo para añadir nueva reseña
         TextField(
             value = resena,
             onValueChange = { resena = it },
