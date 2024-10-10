@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636627986797",
+    "project_id": "novelaapp",
+    "storage_bucket": "novelaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636627986797:android:9980378821087397edd264",
+        "android_client_info": {
+          "package_name": "com.example.novelappfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAosOYOmft9pp0LxehkEqyKM1QYy44m8E4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
