@@ -5,10 +5,15 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.input.KeyboardType
+import java.util.UUID
+
+
 
 @Composable
 fun AgregarNovelaScreen(onAgregarNovela: (Libro) -> Unit) {
@@ -34,6 +39,7 @@ fun AgregarNovelaScreen(onAgregarNovela: (Libro) -> Unit) {
         Button(onClick = {
             if (titulo.isNotBlank() && autor.isNotBlank() && anioPublicacion.isNotBlank() && sinopsis.isNotBlank()) {
                 val novela = Libro(
+                    id = UUID.randomUUID().toString(), // Generar un ID único
                     titulo = titulo,
                     autor = autor,
                     anioPublicacion = anioPublicacion.toInt(),

@@ -1,5 +1,6 @@
 package com.example.novelappfirebase
 
+import java.util.UUID
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -16,10 +17,24 @@ fun App() {
     var libroSeleccionado by remember { mutableStateOf<Libro?>(null) }
 
     // Lista de libros de ejemplo
-    val listaLibros = remember { mutableStateListOf(
-        Libro("El Quijote", "Miguel de Cervantes", 1605, "Una gran obra clásica"),
-        Libro("Cien años de soledad", "Gabriel García Márquez", 1967, "La historia de la familia Buendía")
-    ) }
+    val listaLibros = remember {
+        mutableStateListOf(
+            Libro(
+                id = UUID.randomUUID().toString(),
+                titulo = "El Quijote",
+                autor = "Miguel de Cervantes",
+                anioPublicacion = 1605,
+                sinopsis = "Una gran obra clásica"
+            ),
+            Libro(
+                id = UUID.randomUUID().toString(),
+                titulo = "Cien años de soledad",
+                autor = "Gabriel García Márquez",
+                anioPublicacion = 1967,
+                sinopsis = "La historia de la familia Buendía"
+            )
+        )
+    }
 
     NovelAppFirebaseTheme {
         when (pantallaActual) {
@@ -34,11 +49,13 @@ fun App() {
                     libroSeleccionado = it
                     pantallaActual = "detalles"
                 },
-                onAgregarClick = { pantallaActual = "agregar" }, // Navegar a la pantalla de agregar
+                onAgregarClick = { pantallaActual = "agregar" },
                 modifier = Modifier.fillMaxSize()
             )
             "agregar" -> AgregarNovelaScreen(onAgregarNovela = { nuevaNovela ->
-                listaLibros.add(nuevaNovela)
+                listaLibros.add(
+                    nuevaNovela.copy(id = UUID.randomUUID().toString())
+                )
                 pantallaActual = "lista"
             })
             "detalles" -> libroSeleccionado?.let { libro ->

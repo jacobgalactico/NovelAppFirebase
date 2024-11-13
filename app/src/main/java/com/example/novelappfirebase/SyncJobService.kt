@@ -4,6 +4,7 @@ import android.app.job.JobParameters
 import android.app.job.JobService
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.UUID
 
 class SyncJobService : JobService() {
 
@@ -21,9 +22,24 @@ class SyncJobService : JobService() {
     private fun sincronizarConFirebase(onComplete: () -> Unit) {
         val db = FirebaseFirestore.getInstance()
 
+        // Agregar instancias de libros con valores válidos para cada parámetro, incluyendo el 'id'
         val libros = listOf(
-            Libro("El Quijote", "Miguel de Cervantes", 1605, "Una gran obra clásica"),
-            Libro("Cien años de soledad", "Gabriel García Márquez", 1967, "La historia de la familia Buendía")
+            Libro(
+                id = UUID.randomUUID().toString(), // Genera un ID único
+                titulo = "El Quijote",
+                autor = "Miguel de Cervantes",
+                anioPublicacion = 1605,
+                sinopsis = "Una gran obra clásica",
+                esFavorita = false // o true según desees
+            ),
+            Libro(
+                id = UUID.randomUUID().toString(), // Genera un ID único
+                titulo = "Cien años de soledad",
+                autor = "Gabriel García Márquez",
+                anioPublicacion = 1967,
+                sinopsis = "La historia de la familia Buendía",
+                esFavorita = false // o true según desees
+            )
         )
 
         libros.forEach { libro ->

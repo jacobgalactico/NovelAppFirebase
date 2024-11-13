@@ -4,7 +4,7 @@ import android.content.Intent
 import android.util.Log
 import com.example.novelapp.Libro
 import com.google.firebase.firestore.FirebaseFirestore
-
+import java.util.UUID
 class SyncAlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -16,8 +16,8 @@ class SyncAlarmReceiver : BroadcastReceiver() {
     private fun sincronizarConFirebase() {
         val db = FirebaseFirestore.getInstance()
         val libros = listOf(
-            Libro("El Quijote", "Miguel de Cervantes", 1605, "Una gran obra clásica"),
-            Libro("Cien años de soledad", "Gabriel García Márquez", 1967, "La historia de la familia Buendía")
+            Libro(UUID.randomUUID().toString(), "El Quijote", "Miguel de Cervantes", 1605, "Una gran obra clásica"),
+            Libro(UUID.randomUUID().toString(), "Cien años de soledad", "Gabriel García Márquez", 1967, "La historia de la familia Buendía")
         )
 
         libros.forEach { libro ->
