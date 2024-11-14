@@ -13,15 +13,12 @@ class NovelasWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         for (appWidgetId in appWidgetIds) {
-            // Configura el RemoteViews con el layout del widget
             val views = RemoteViews(context.packageName, R.layout.novelas_widget_layout)
-
             // Configura un intent para abrir la aplicación
             val intent = Intent(context, MainActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
             views.setOnClickPendingIntent(R.id.widget_container, pendingIntent)
 
-            // Actualiza el widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }

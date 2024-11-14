@@ -13,7 +13,6 @@ fun mostrarNotificacion(context: Context) {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // No tenemos permiso, no mostramos la notificación
             return
         }
     }

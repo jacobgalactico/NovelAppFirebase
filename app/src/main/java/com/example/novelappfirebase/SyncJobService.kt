@@ -30,7 +30,7 @@ class SyncJobService : JobService() {
                 autor = "Miguel de Cervantes",
                 anioPublicacion = 1605,
                 sinopsis = "Una gran obra clásica",
-                esFavorita = false // o true según desees
+                esFavorita = false
             ),
             Libro(
                 id = UUID.randomUUID().toString(), // Genera un ID único
@@ -38,7 +38,7 @@ class SyncJobService : JobService() {
                 autor = "Gabriel García Márquez",
                 anioPublicacion = 1967,
                 sinopsis = "La historia de la familia Buendía",
-                esFavorita = false // o true según desees
+                esFavorita = false
             )
         )
 

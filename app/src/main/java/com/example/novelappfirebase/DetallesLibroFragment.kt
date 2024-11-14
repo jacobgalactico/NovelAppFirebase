@@ -34,6 +34,6 @@ class DetallesLibroFragment : Fragment() {
         // Actualiza los elementos de la UI con los detalles del libro
         view.findViewById<TextView>(R.id.titulo).text = libro.titulo
         view.findViewById<TextView>(R.id.autor).text = libro.autor
-        // Agrega más detalles según tus necesidades
+
     }
 }

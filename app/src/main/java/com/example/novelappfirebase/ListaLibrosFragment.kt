@@ -29,7 +29,7 @@ class ListaLibrosFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Suponiendo que tienes una función para cargar los libros desde la base de datos o una API
+
         val libros = cargarLibros()
         adapter.submitList(libros)
 
@@ -37,7 +37,6 @@ class ListaLibrosFragment : Fragment() {
     }
 
     private fun cargarLibros(): List<Libro> {
-        // Implementa aquí la lógica para cargar la lista de novelas
         return listOf()
     }
 }
